@@ -1,46 +1,43 @@
 require('malta').checkExec('dot');
 
-var path = require('path'),
+const path = require('path'),
 	fs = require('fs'),
-	child_process = require('child_process');
+	{spawn} = require('child_process');
 
 function malta_graphviz(o, opts) {
 	var self = this,
 		start = new Date(),
-		msg,
+        msg,
+        out = fs.openSync(`./${opts.outName}`, 'w');
+        err = fs.openSync('./out.log', 'w');
 		pluginName = path.basename(path.dirname(__filename)),
-        args = [opts.options, self.tplName, '>', opts.outName],
+        args = [opts.options, self.tplPath],
         cmd = ['dot', 'neato', 'twopi', 'circo', 'fdp', 'sfdp', 'patchwork', 'osage'].includes(opts.command)
             ? opts.command
             : 'dot';
-
-    console.log(cmd, args.join(' '))
-
+    // console.log(self)
 	return function (solve, reject){
 		try {
-            var ls = child_process.spawn(cmd, args);
-            
+            var ls = spawn(cmd, args, {
+                detached: true,
+                stdio: ['ignore', out, err]
+            });
+            ls.unref();
+            // remove the out file
+            fs.unlink(self.outName);
 			ls.on('exit', function (code) {
-				if (code == 0) {
-					msg = 'plugin ' + pluginName.white() + ' ran';
-					solve(o);
-					self.notifyAndUnlock(start, msg);
-				}
-			});
-			ls.stderr.on('data', function(err) {
-				console.log("ERROR".red());
-				msg = 'plugin ' + pluginName.white() + ' compilation error';
-				console.log((err+"").white());
-				reject(msg);
+				msg = 'plugin ' + pluginName.white() + ` wrote ${opts.outName}`;
+				solve(o);
 				self.notifyAndUnlock(start, msg);
-            });
-            ls.stdout.on('data', (data) => {
-                self.notifyAndUnlock(start, 'done');
-            });
-            ls.on('close', function(err) {
-                console.log('close')
-                self.notifyAndUnlock(start, 'done');
-            })
+			});
+			ls.on('error', function (err) {
+				msg = 'plugin ' + pluginName.white() + ' DIDN`T'.red() +` wrote ${opts.outName}`;
+				self.doErr(err, o, pluginName);
+				err
+                    ? reject(`Plugin ${pluginName} error:\n${err}`)
+                    : solve(o);
+				self.notifyAndUnlock(start, msg);
+			});
 		} catch (err) {
 			self.doErr(err, o, pluginName);
 		}

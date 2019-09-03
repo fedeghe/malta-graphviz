@@ -1,12 +1,11 @@
 {
-  "name": "malta-graphviz",
-  "version": "1.0.0",
-  "description": "graphviz plugin for malta",
-  "main": "index.js",
-  "author": "fedeghe@gmail.com",
-  "license": "MIT",
-  "dependencies": {
-    "malta": "^4.0.4",
-    "malta-del": "^1.0.6"
-  }
+    "name": "malta-graphviz",
+    "version": "1.0.0",
+    "description": "graphviz plugin for malta",
+    "main": "index.js",
+    "author": "fedeghe@gmail.com",
+    "license": "MIT",
+    "dependencies": {
+        "malta": "^4.0.4"
+    }
 }
