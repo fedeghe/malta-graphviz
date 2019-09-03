@@ -13,8 +13,10 @@ Parameters :
     - **cmd** : one among 'dot','neato','twopi','circo','fdp','sfdp','patchwork','osage' (default : 'dot')  
     - **options** : refer to dot manual (`man dot`)  
     - **outName** : the output file path name  
-    - _files_ ? : not needed since the `files` parameter You might refer into the dot manual here is the single malta template which is expected to contain the right syntax
+    - _files_ ? : not needed since the `files` parameter You might refer into the dot manual here is the single malta template which is expected to contain the right syntax  
+    - del: 0 to not delete the out tpl, default is 1
 
+The malta outfile will be deleted automatically.  
 
 Sample usage, in the .json file :
 ```
