@@ -10,14 +10,14 @@ This plugin can be used on all files, although using it without providing the ri
 `graphviz` is a mandatory dependency (`brew install graphwiz`). 
 
 Parameters :  
-    - cmd : one among 'dot','neato','twopi','circo','fdp','sfdp','patchwork','osage' (default : 'dot')  
-    - options : refer to dot manual (`man dot`)
-    - outName : the output file path name
-    - files ? : not needed since the `files` parameter You might refer into the dot manual here is the single malta template which is expected to contain the right syntax
+    - **cmd** : one among 'dot','neato','twopi','circo','fdp','sfdp','patchwork','osage' (default : 'dot')  
+    - **options** : refer to dot manual (`man dot`)  
+    - **outName** : the output file path name  
+    - _files_ ? : not needed since the `files` parameter You might refer into the dot manual here is the single malta template which is expected to contain the right syntax
 
-Sample usage:  
+Note that the malta output template file will be deleted automatically.  
 
-In the .json file :
+Sample usage, in the .json file :
 ```
 "test.dot": "out -plugins=malta-graphviz[options:\"-Tjson\",outName:\"test.json\"]"
 ```
