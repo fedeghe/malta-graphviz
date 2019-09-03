@@ -3,8 +3,18 @@
     "version": "1.0.0",
     "description": "graphviz plugin for malta",
     "main": "index.js",
-    "author": "fedeghe@gmail.com",
+    "author": "Federico Ghedina <fedeghe@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fedeghe/malta-dev-srv.git"
+    },
+    "keywords": [
+        "malta",
+        "malta plugin",
+        "malta graphviz"
+    ],
     "license": "MIT",
+    "homepage": "https://github.com/fedeghe/malta-graphviz#readme",
     "dependencies": {
         "malta": "^4.0.4"
     }
