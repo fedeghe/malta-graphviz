@@ -7,7 +7,7 @@
 
 This plugin can be used on all files, although using it without providing the right input file content format does not make any sense.
 
-`graphviz` is a mandatory dependency (`brew install graphwiz`). 
+`graphviz` is a mandatory dependency (`brew install graphviz`). 
 
 Parameters :  
     - **cmd** : one among 'dot','neato','twopi','circo','fdp','sfdp','patchwork','osage' (default : 'dot')  
