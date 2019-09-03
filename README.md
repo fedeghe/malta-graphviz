@@ -15,7 +15,6 @@ Parameters :
     - **outName** : the output file path name  
     - _files_ ? : not needed since the `files` parameter You might refer into the dot manual here is the single malta template which is expected to contain the right syntax
 
-Note that the malta output template file will be deleted automatically.  
 
 Sample usage, in the .json file :
 ```

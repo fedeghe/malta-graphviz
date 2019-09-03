@@ -23,8 +23,7 @@ function malta_graphviz(o, opts) {
                 stdio: ['ignore', out, err]
             });
             ls.unref();
-            // remove the out file
-            fs.unlink(self.outName);
+            
 			ls.on('exit', function (code) {
 				msg = 'plugin ' + pluginName.white() + ` wrote ${opts.outName}`;
 				solve(o);
