@@ -16,6 +16,6 @@
     "license": "MIT",
     "homepage": "https://github.com/fedeghe/malta-graphviz#readme",
     "dependencies": {
-        "malta": "^4.0.4"
+        "malta": "4.1.3"
     }
 }

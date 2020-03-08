@@ -5,11 +5,13 @@ const path = require('path'),
 	{ spawn } = require('child_process');
 
 function malta_graphviz(o, opts) {
-	var self = this,
+	const self = this,
 		start = new Date(),
 		del = 'del' in opts ? Boolean(parseInt(opts.del, 10)) : true,
-		msg,
-		out = fs.openSync(`./${opts.outName}`, 'w');
+        out = fs.openSync(`./${opts.outName}`, 'w');
+        
+    let msg;
+    
 	err = fs.openSync('./out.log', 'w');
 	pluginName = path.basename(path.dirname(__filename)),
 		args = [opts.options, self.tplPath],
@@ -17,20 +19,20 @@ function malta_graphviz(o, opts) {
 			? opts.command
 			: 'dot';
 	// console.log(self)
-	return function (solve, reject) {
+	return (solve, reject) => {
 		try {
-			var ls = spawn(cmd, args, {
+			const ls = spawn(cmd, args, {
 				detached: true,
 				stdio: ['ignore', out, err]
 			});
 			ls.unref();
-			del && fs.unlink(self.outName, (err) => { console.log('Error deleting outfile: ', err) });
-			ls.on('exit', function (code) {
+			del && fs.unlink(self.outName, err => console.log('Error deleting outfile: ', err));
+			ls.on('exit', code => {
 				msg = 'plugin ' + pluginName.white() + ` wrote ${opts.outName}`;
 				solve(o);
 				self.notifyAndUnlock(start, msg);
 			});
-			ls.on('error', function (err) {
+			ls.on('error', err => {
 				msg = 'plugin ' + pluginName.white() + ' DIDN`T'.red() + ` wrote ${opts.outName}`;
 				self.doErr(err, o, pluginName);
 				err

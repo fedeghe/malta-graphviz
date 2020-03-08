@@ -1,13 +1,13 @@
 ---
 [![npm version](https://badge.fury.io/js/malta-graphviz.svg)](http://badge.fury.io/js/malta-graphviz)
-[![Dependencies](https://david-dm.org/fedeghe/malta-graphviz.svg)](https://david-dm.org/fedeghe/malta-graphviz)
 [![npm downloads](https://img.shields.io/npm/dt/malta-graphviz.svg)](https://npmjs.org/package/malta-graphviz)
 [![npm downloads](https://img.shields.io/npm/dm/malta-graphviz.svg)](https://npmjs.org/package/malta-graphviz)  
 ---  
 
 This plugin can be used on all files, although using it without providing the right input file content format does not make any sense.
 
-`graphviz` is a mandatory dependency (`brew install graphviz`). 
+`graphviz` is a mandatory dependency (`brew install graphviz`)  
+thus `dot` needs to be available from the console.
 
 Parameters :  
     - **cmd** : one among 'dot','neato','twopi','circo','fdp','sfdp','patchwork','osage' (default : 'dot')  
