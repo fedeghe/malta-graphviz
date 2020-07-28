@@ -1,6 +1,6 @@
 {
     "name": "malta-graphviz",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "graphviz plugin for malta",
     "main": "index.js",
     "author": "Federico Ghedina <fedeghe@gmail.com>",
